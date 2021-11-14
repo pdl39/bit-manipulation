@@ -36,8 +36,8 @@ const countBits1 = (int) => { // Note: n >> k = n / (2^k)
   let n = int;
 
   let bitCount = 0;
-  while (int > 0) {
-    int >>= 1; // '>>=' is equivalent to 'int = int >> 1' or 'int /= 2'
+  while (n > 0) {
+    n >>= 1; // '>>=' is equivalent to 'n = n >> 1' or 'n /= 2'
     bitCount++;
   }
   return bitCount;
@@ -81,7 +81,7 @@ console.log('------------------');
 /* Now, let's look at an algorithm for outputing the binary number as an array of 'bits'. */
 
 // T: O(logn)
-// S: O(n)
+// S: O(logn) --> the output array of binary bits requires # of slots corresponding to the # of bits for integer n, which is upper bounded by log2(n)
 // where n = integer value
 
 const decimalToBinary = (int) => {
@@ -104,3 +104,5 @@ const decimalToBinary = (int) => {
 console.log(`Integer ${6735} in Binary: `, decimalToBinary(6735));
 console.log(`Integer ${23865} in Binary: `, decimalToBinary(23865));
 console.log(`Integer ${16} in Binary: `, decimalToBinary(16));
+
+console.log(Math.log2(6735))
