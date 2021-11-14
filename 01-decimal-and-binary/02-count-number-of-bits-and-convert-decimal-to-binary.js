@@ -23,7 +23,7 @@ binary(1101001001111) = decimal(6735)
 Here, the # of divisions we do (13) corresponds to the # of bits for the integer.
 */
 
-/* First, let's look at 2 algorithms to get the # of bits (binary) for an integer. */
+/* First, let's look at 3 algorithms to get the # of bits of the binary number of an integer. */
 
 // #1: Bit Shifting: Right Shift (>>).
 // T: O(logn)
@@ -64,16 +64,39 @@ const countBits2 = (int) => { // Note: n << k = n * (2^k)
 }
 
 
+// #3: log base 2.
+// T: O(1)
+// S: O(1)
+// where n = integer value
+
+// Remember, # of bits of the binary number of the integer n is upper bounded by log2(n),
+// as the # of digits of the decimal number of the integer n is upper bounded by log10(n).
+
+const countBits3 = (int) => {
+  if (int === 0) return 1; // log(0) is infinity
+  return Math.floor(Math.log2(int) + 1);
+}
+
+
 // TEST
 console.log(`Number of bits for ${6735}: `, countBits1(6735));
 console.log(`Number of bits for ${23865}: `, countBits1(23865));
 console.log(`Number of bits for ${16}: `, countBits1(16));
+console.log(`Number of bits for ${10}: `, countBits1(10));
 
 console.log('------------------');
 
 console.log(`Number of bits for ${6735}: `, countBits2(6735));
 console.log(`Number of bits for ${23865}: `, countBits2(23865));
-console.log(`Number of bits for ${16}: `, (16));
+console.log(`Number of bits for ${16}: `, countBits2(16));
+console.log(`Number of bits for ${10}: `, countBits2(10));
+
+console.log('------------------');
+
+console.log(`Number of bits for ${6735}: `, countBits3(6735));
+console.log(`Number of bits for ${23865}: `, countBits3(23865));
+console.log(`Number of bits for ${16}: `, countBits3(16));
+console.log(`Number of bits for ${10}: `, countBits3(10));
 
 console.log('------------------');
 
@@ -104,5 +127,4 @@ const decimalToBinary = (int) => {
 console.log(`Integer ${6735} in Binary: `, decimalToBinary(6735));
 console.log(`Integer ${23865} in Binary: `, decimalToBinary(23865));
 console.log(`Integer ${16} in Binary: `, decimalToBinary(16));
-
-console.log(Math.log2(6735))
+console.log(`Integer ${245} in Binary: `, decimalToBinary(245));
